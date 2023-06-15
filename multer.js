@@ -1,8 +1,9 @@
 const multer = require("multer");
+const path = require("path");
 
 const storage = multer.diskStorage({
   destination: (req, files, cb) => {
-    cb(null, `${__dirname}/audio-files`);
+    cb(null, path.join(process.cwd(), 'audio-files'));
   },
   filename: (req, file, cb) => {
     cb(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
