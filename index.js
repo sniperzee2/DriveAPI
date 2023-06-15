@@ -7,8 +7,14 @@ const multer = require('./multer.js');
 const fs = require("fs");
 
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+
 app.use(express.json());
+const corsOptions = { 
+  AccessControlAllowOrigin: '*',  
+  origin: '*',  
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE' 
+}
+app.use(cors(corsOptions))
 
 app.use(morgan("dev"));
 
